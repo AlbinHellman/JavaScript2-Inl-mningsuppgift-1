@@ -1,8 +1,8 @@
 <template>
   <div class="card">
-      <p>ID: {{ Product.id }}</p>
-      <p>NAMN: {{ Product.name }}</p>
-      <p>PRIS: {{ Product.price }}</p>
+      <p>ID: {{ product.id }}</p>
+      <p>NAMN: {{ product.name }}</p>
+      <p>PRIS: {{ product.price }}</p>
   </div>
 </template>
 

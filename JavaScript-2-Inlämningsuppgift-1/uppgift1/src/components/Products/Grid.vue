@@ -1,17 +1,23 @@
 <template>
 <div>
     <div class="grid">
-     
-</div>
-</div>
+        <product-card v-for="product in products" :key="product.id" :product="product" />
+        </div>
+        </div>
   
-</template>
+  
+  </template>
 
 <script>
+import ProductCard from './ProductCard'
 export default {
+    components: {
+        ProductCard
+    },
     data() {
         return {
-            products: [
+
+        products: [
                 { id: 1, name: 'Produkt 1', price: 99 },
                 { id: 2, name: 'Produkt 2', price: 149 },
                 { id: 3, name: 'Produkt 3', price: 499 },

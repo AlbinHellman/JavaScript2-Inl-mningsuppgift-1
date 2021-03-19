@@ -31,4 +31,13 @@ export default {
   cursor:pointer;
 }
 
+.btn:hover {
+  box-shadow: 0 0 5px 0 rgb(27, 27, 252);
+}
+
+.btn:active {
+  background: rgb(89, 89, 158);
+  box-shadow: none;
+}
+
 </style>

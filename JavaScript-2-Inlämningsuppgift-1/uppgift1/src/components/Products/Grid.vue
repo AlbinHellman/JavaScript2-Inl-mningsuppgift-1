@@ -1,7 +1,7 @@
 <template>
 <div>
-    <button class="btn">LÄGGTILL</button>
-    <button class="btn">MINSKA</button>
+    <button @click="addToPrice" class="btn">LÄGGTILL</button>
+    <button @click="subPrice(5)" class="btn">MINSKA</button>
     <div class="grid">
         <product-card v-for="product in products" :key="product.id" :product="product" />
         </div>
@@ -35,6 +35,18 @@ export default {
                 { id: 14, name: 'Produkt 14', price: 2499 },
                 { id: 15, name: 'Produkt 15', price: 3290 }
             ]
+        }
+    },
+    methods: {
+        addToPrice() {
+            this.products.forEach(product => {
+                product.price += 10
+            })
+        },
+        subPrice(amount) {
+            this.products.forEach(product => {
+                product.price -= amount
+            })
         }
     }
 

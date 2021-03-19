@@ -1,5 +1,7 @@
 <template>
 <div>
+    <button class="btn">LÄGGTILL</button>
+    <button class="btn">MINSKA</button>
     <div class="grid">
         <product-card v-for="product in products" :key="product.id" :product="product" />
         </div>
@@ -40,5 +42,16 @@ export default {
 </script>
 
 <style>
+.grid {
+    padding: 3rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 3rem;
+}
+
+.card {
+    background: rgb(89, 89, 158);
+    color: white
+}
 
 </style>

@@ -3,7 +3,7 @@
     <button @click="addToPrice" class="btn">LÄGGTILL</button>
     <button @click="subPrice(5)" class="btn">MINSKA</button>
     <div class="list">
-        <product-card v-for="product in products" :key="product.id" :product="product" />
+        <product-card v-for="product in prodTax" :key="product.id" :product="product" />
         </div>
         </div>
 </template>
@@ -39,19 +39,42 @@ export default {
     },
     methods: {
         addToPrice() {
-            this.products.forEach(product => {
-                product.price += 10
-            })
+       //     this.products.forEach(product => {
+       //         product.price += 10
+       //     })
+
+     //  this.$store.state.products.forEach(product => {
+    //       product.price += 10
+    //   })
+
+    //this.$store.commit('ADD', 10)
+    this.$store.dispatch('addToPrice', 10)
         },
         subPrice(amount) {
-            this.products.forEach(product => {
-                product.price -= amount
-            })
+          //  this.products.forEach(product => {
+          //      product.price -= amount
+          //  })
+
+          // this.$store.commit('SUB', amount)
+
+          this.$store.dispatch('subAsync', amount)
         }
     },
     computed: {
         products() {
             return this.$store.state.products
+        },
+        prodTax() {
+            //let taxedProducts = this.$store.state.products.map(product => {
+            //    return {
+            //        ...product,
+            //        name: product.name + ' + tax',
+            //        price: Math.round(product.price + product.price * 0.2)
+            //    }
+           // })
+//
+  //          return taxedProducts
+  return this.$store.getters.taxedProducts
         }
     }
 

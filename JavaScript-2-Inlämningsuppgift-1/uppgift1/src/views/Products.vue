@@ -3,10 +3,10 @@
       <aside>
           <div class="knappar">
               <div class="knapp1">
-              <button @click="comp = 'Grid'"><i class="fas fa-th-large"></i></button>
+              <button @click="changeComp('Grid')"><i class="fas fa-th-large"></i></button>
               </div>
               <div class="knapp2">
-              <button @click="comp = 'List'"><i class="fas fa-list"></i></button>
+              <button @click="changeComp('List')"><i class="fas fa-list"></i></button>
   </div>
           </div>
   <br>
@@ -27,6 +27,7 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 import Grid from '../components/Products/Grid'
 import List from '../components/Products/List'
 export default {
@@ -37,8 +38,14 @@ export default {
     },
     data() {
         return {
-            comp: 'Grid'
+          //  comp: 'Grid'
         }
+    },
+    computed: {
+        ...mapGetters(['comp'])
+    },
+    methods: {
+        ...mapActions(['changeComp'])
     }
 
 }

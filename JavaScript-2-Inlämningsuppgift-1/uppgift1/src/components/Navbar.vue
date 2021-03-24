@@ -5,8 +5,12 @@
         <router-link class="link" to="/" exact>Startsida</router-link>
         <router-link class="link" to="/om" exact>Om</router-link>
         <router-link class="link" to="/products" exact>Produkter</router-link>
+        <router-link class="fas fa-shopping-cart" to="/ShoppingCart" exact></router-link>
+        
     </div>
 </nav>
+
+
   
 </template>
 
@@ -22,6 +26,7 @@ nav {
     justify-content: space-between;
     align-items: center;
     padding: 1rem;
+    
     
     background: rgb(89, 89, 158)
     
@@ -57,5 +62,24 @@ font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubunt
     bottom: 1rem;
     right: 1rem;
 }
+
+.fa-shopping-cart {
+    color: black;
+    margin: 3rem;
+}
+
+.fa-shopping-cart:hover {
+    color: white;
+}
+
+.fa-shopping-cart.router-link-active::after {
+    content: '';
+    position: absolute;
+    border-bottom: 3px solid black;
+    left: 1rem;
+    bottom: 1rem;
+    right: 1rem;
+}
+
 
 </style>

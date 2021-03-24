@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import ProductDetails from '../views/ProductDetails.vue'
+import ShoppingCart from '../views/ShoppingCart.vue'
 
 Vue.use(VueRouter)
 
@@ -18,11 +19,18 @@ const routes = [
     component: Products
   },
   {
+    path: '/product/cartlist/:id',
+    name: 'ShoppingCart',
+    component: ShoppingCart
+   
+  },
+  {
     path: '/product/details/:id',
     name: 'ProductDetails',
     component: ProductDetails,
     props: true
   },
+ 
   {
     path: '/about',
     name: 'About',

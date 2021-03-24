@@ -1,18 +1,27 @@
 <template>
   <div class="card">
-      <h1>name</h1>
+      <h1>{{ product.name }}</h1>
       <p>id: {{ id }}</p>
-      <h3>PRICE: 000</h3>
-      <h3>PRICE + TAX: 000</h3>
+      <h3>PRICE: {{ product.price }}</h3>
+      <h3>PRICE + TAX: {{ product.taxPrice }}</h3>
 
   
   </div>
 </template>
 
 <script>
-
+import { mapActions, mapGetters } from 'vuex'
 export default {
-    props: ['id']
+    props: ['id'],
+    methods: {
+      ...mapActions(['getProduct'])
+    },
+    computed: {
+      ...mapGetters(['product'])
+    },
+    created() {
+      this.getProduct(this.id)
+    }
 
 }
 </script>

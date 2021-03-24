@@ -12,7 +12,7 @@
   <br>
   <form>
       <div>
-          <input type="text" placeholder="sök...">
+          <input type="text" placeholder="sök..." v-model="searchVal" @keyup="search(searchVal)">
       </div>
   </form>
   <br>
@@ -39,13 +39,14 @@ export default {
     data() {
         return {
           //  comp: 'Grid'
+          searchVal: ''
         }
     },
     computed: {
         ...mapGetters(['comp'])
     },
     methods: {
-        ...mapActions(['changeComp'])
+        ...mapActions(['changeComp', 'search'])
     }
 
 }

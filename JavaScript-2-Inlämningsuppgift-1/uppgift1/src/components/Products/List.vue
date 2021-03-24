@@ -3,7 +3,7 @@
     <button @click="addToPrice" class="btn">LÄGGTILL</button>
     <button @click="subPrice(5)" class="btn">MINSKA</button>
     <div class="list">
-        <product-card v-for="product in prodTax" :key="product.id" :product="product" />
+        <product-card v-for="product in prodTax" :key="product.id" class="card" :product="product" />
         </div>
         </div>
 </template>

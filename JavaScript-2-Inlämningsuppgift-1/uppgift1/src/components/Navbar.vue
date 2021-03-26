@@ -5,7 +5,7 @@
         <router-link class="link" to="/" exact>Startsida</router-link>
         <router-link class="link" to="/om" exact>Om</router-link>
         <router-link class="link" to="/products" exact>Produkter</router-link>
-        <router-link class="fas fa-shopping-cart" to="/ShoppingCart" exact></router-link>
+        <router-link class="fas fa-shopping-cart" to="/product/cartlist/id"></router-link>
         
     </div>
 </nav>

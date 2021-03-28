@@ -5,6 +5,7 @@ import Products from '../views/Products.vue'
 import ProductDetails from '../views/ProductDetails.vue'
 import ShoppingCart from '../views/ShoppingCart.vue'
 
+
 Vue.use(VueRouter)
 
 const routes = [
@@ -24,6 +25,7 @@ const routes = [
     component: ShoppingCart
    
   },
+
   {
     path: '/product/details/:id',
     name: 'ProductDetails',

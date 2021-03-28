@@ -4,6 +4,8 @@
       <p>id: {{ id }}</p>
       <h3>PRICE: {{ product.price }}</h3>
       <h3>PRICE + TAX: {{ product.taxPrice }}</h3>
+            <button class="knapp btn btn-primary btn-rounded" @click="addProductToCart({ product, quantity })">
+          <i class="fas fa-cart-plus mr-2" aria-hidden="true"></i> LÄGG TILL I VARUKORGEN</button>
 
   
   </div>
@@ -13,8 +15,14 @@
 import { mapActions, mapGetters } from 'vuex'
 export default {
     props: ['id'],
+    data() {
+      return {
+        quantity: 1
+      }
+    },
     methods: {
-      ...mapActions(['getProduct'])
+      ...mapActions(['getProduct', 'addProductToCart'])
+      
     },
     computed: {
       ...mapGetters(['product'])
@@ -24,6 +32,7 @@ export default {
     }
 
 }
+
 </script>
 
 <style scoped>
@@ -36,6 +45,10 @@ export default {
   height: 15rem;
   font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
   
+}
+.knapp {
+  margin: auto;
+  margin-top: 1rem;
 }
 
 </style>

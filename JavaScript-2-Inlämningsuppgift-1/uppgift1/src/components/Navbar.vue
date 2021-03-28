@@ -5,7 +5,11 @@
         <router-link class="link" to="/" exact>Startsida</router-link>
         <router-link class="link" to="/om" exact>Om</router-link>
         <router-link class="link" to="/products" exact>Produkter</router-link>
-        <router-link class="fas fa-shopping-cart" to="/product/cartlist/id"></router-link>
+        <router-link class="fas fa-shopping-cart" to="/product/cartlist/id">
+        <span class="badge rounded-pill badge-notification bg-danger">1</span></router-link>
+        
+        
+        
         
     </div>
 </nav>
@@ -79,6 +83,11 @@ font-family:-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubunt
     left: 1rem;
     bottom: 1rem;
     right: 1rem;
+}
+
+.badge {
+    color: red;
+    
 }
 
 

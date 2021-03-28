@@ -3,6 +3,7 @@
       <p>ID: {{ product.id }}</p>
       <p>NAMN: {{ product.name }}</p>
       <p>PRIS: {{ product.price }}</p>
+
   </router-link>
 </template>
 

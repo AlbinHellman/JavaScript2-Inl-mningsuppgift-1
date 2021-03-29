@@ -7,6 +7,7 @@
         <router-link class="link" to="/products" exact>Produkter</router-link>
         <router-link class="fas fa-shopping-cart" to="/product/cartlist/id">
         <span class="badge rounded-pill badge-notification bg-danger">1</span></router-link>
+        <router-link class="link" to="/login" exact>Logga In</router-link>
         
         
         

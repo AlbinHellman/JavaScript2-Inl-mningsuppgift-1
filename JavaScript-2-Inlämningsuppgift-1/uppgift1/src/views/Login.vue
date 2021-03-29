@@ -15,12 +15,12 @@
       </div>
 </div>
 
-<div class="knapp">
-      <button type="submit" class="btn btn-primary btn-block mb-4">Signa in</button>
-</div>
+
+      <button type="submit" class="knapp btn btn-primary btn-block mb-4">Signa in</button>
+
 
       <div class="registrera">
-          <p>Inte medlem? <router-link to="/register">Registrera</router-link></p>
+          <p>Inte medlem? <router-link class="link" to="/register" exact>Signa upp</router-link></p>
       </div>
   </form>
 </div>
@@ -51,9 +51,19 @@ export default {
 
 <style scoped>
 
+
+.container {
+    background: rgb(190, 170, 170);
+    height: 22rem;
+    width: 40rem;
+    margin: auto;
+    
+}
+
 .h4 {
-    text-align: center;
+   text-align: center;
     margin-top: 4rem;
+    padding-top: 2rem;
     font-size: 3rem;
     font-family:monospace;
     
@@ -69,18 +79,21 @@ export default {
     position: relative;
     bottom: 1.5rem;
     right: 10rem;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 
 .knapp {
-    text-align: center;
+      margin-left: 18rem;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    
     
 }
 
 
 .registrera {
     text-align: center;
-    margin-top: 2rem;
+    padding-top: 2rem;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif
 }
 

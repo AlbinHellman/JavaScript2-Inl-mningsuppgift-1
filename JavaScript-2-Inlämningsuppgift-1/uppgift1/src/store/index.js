@@ -6,6 +6,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    userToken: null,
+    loggedIn: false,
     products: [
       { id: '1', name: 'Product 1', price: 200 },
       { id: '2', name: 'Product 2', price: 299 },
@@ -28,6 +30,7 @@ export default new Vuex.Store({
     searchVal: ''
   },
   getters: {
+    loggedIn: state => state.loggedIn,
     taxedProducts: state => {
       let taxedProducts = state.products.map(product => {
         return {
@@ -35,6 +38,7 @@ export default new Vuex.Store({
           name: product.name + ' + tax',
           price: Math.round(product.price + product.price * 0.2)
         }
+     
       })
 
       return taxedProducts
@@ -47,6 +51,32 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    SET_USER: (state, token) => {
+      if(token) {
+        state.userToken = token
+        state.loggedIn = true
+      } else {
+        state.userToken = null
+        state.loggedIn = false
+      }
+    },
+    CHECK_USER: state => {
+      try {
+        let token = localStorage.getItem('token')
+        if(token) {
+          state.userToken = token
+          state.loggedIn = true
+        } else {
+          state.userToken = null
+          state.loggedIn = false
+        }
+      }
+      catch(err) {
+        console.log(err)
+      }
+    },
+    
+    
     ADD: (state, amount) => {
       state.products.forEach(product => {
         product.price += amount
@@ -70,7 +100,7 @@ export default new Vuex.Store({
     SEARCH: (state, val) => {
       state.searchVal = val
     }
-
+  
   },
   actions: {
     // subAsync: (context, amount) => {

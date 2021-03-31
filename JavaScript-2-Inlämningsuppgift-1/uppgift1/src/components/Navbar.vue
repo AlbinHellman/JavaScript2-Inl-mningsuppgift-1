@@ -1,5 +1,6 @@
 <template>
-<nav>
+<nav >
+   
     <router-link to="/" class="eCommerce">Min eCommerce</router-link>
     <div>
         <router-link class="link" to="/" exact>Startsida</router-link>
@@ -7,12 +8,15 @@
         <router-link class="link" to="/products" exact>Produkter</router-link>
         <router-link class="fas fa-shopping-cart" to="/product/cartlist/id">
         <span class="badge rounded-pill badge-notification bg-danger">1</span></router-link>
-        <router-link class="link" to="/login" exact>Logga In</router-link>
+        <router-link class="fas fa-user" v-if="!loggedIn" to="/user" exact></router-link>
+        <router-link class="link" v-if="!loggedIn" to="/login" exact>Logga In</router-link>
+                <button class="link" v-if="!loggedIn" @click="logout">Logga Ut</button>
         
         
         
-        
+   
     </div>
+   
 </nav>
 
 
@@ -20,7 +24,17 @@
 </template>
 
 <script>
+import { mapGetters, mapActions } from 'vuex'
 export default {
+    components: {
+
+    },
+    computed: {
+        ...mapGetters(['loggedIn'])
+    },
+    methods: {
+        ...mapActions(['logout'])
+    }
 
 }
 </script>

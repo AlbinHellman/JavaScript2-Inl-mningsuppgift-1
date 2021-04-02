@@ -1,5 +1,7 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from '@/axios'
+import router from '@/router'
 
 
 Vue.use(Vuex)
@@ -38,7 +40,6 @@ export default new Vuex.Store({
           name: product.name + ' + tax',
           price: Math.round(product.price + product.price * 0.2)
         }
-     
       })
 
       return taxedProducts
@@ -75,8 +76,6 @@ export default new Vuex.Store({
         console.log(err)
       }
     },
-    
-    
     ADD: (state, amount) => {
       state.products.forEach(product => {
         product.price += amount
@@ -100,9 +99,44 @@ export default new Vuex.Store({
     SEARCH: (state, val) => {
       state.searchVal = val
     }
-  
+
   },
   actions: {
+    register: async ({dispatch}, _user) => {
+      const user = {
+        email: _user.email,
+        password: _user.password
+      }
+      await axios.post('/users/register', _user)
+      dispatch('login', {user})
+    },
+    login: ({commit}, payload) => {
+      axios.post('/users/login', payload.user)
+        .then(res => {
+          if(res.status === 200) {
+            
+            localStorage.setItem('token', res.data.token)
+            commit('SET_USER', res.data.token)
+
+            if(payload.route) {
+              router.push(payload.route)
+            } else {
+              router.push('/')
+            }
+          }
+        })
+    },
+    checkUser: ({commit}) => {
+      commit('CHECK_USER')
+    },
+    logout: ({commit}) => {
+      let token = localStorage.getItem('token')
+      if(token) {
+        localStorage.removeItem('token')
+
+        commit('SET_USER', null)
+      }
+},
     // subAsync: (context, amount) => {
     //   setTimeout(() => {
     //     context.commit('SUB', amount)
@@ -125,6 +159,8 @@ export default new Vuex.Store({
     search: ({commit}, val) => {
       commit('SEARCH', val)
     },
-   
+  
   }
 })
+  
+

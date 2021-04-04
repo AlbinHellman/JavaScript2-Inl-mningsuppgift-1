@@ -3,7 +3,6 @@ import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
 import Products from '../views/Products.vue'
 import ProductDetails from '../views/ProductDetails.vue'
-import ShoppingCart from '../views/ShoppingCart.vue'
 import Login from '../views/Login.vue'
 import Register from '../views/Register.vue'
 import User from '../views/User.vue'
@@ -32,12 +31,7 @@ path: '/register',
   name: 'Register',
   component: Register
 },
-  {
-    path: '/product/cartlist/:id',
-    name: 'ShoppingCart',
-    component: ShoppingCart
-   
-  },
+  
 
   {
     path: '/product/details/:id',

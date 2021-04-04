@@ -10,6 +10,7 @@ export default new Vuex.Store({
   state: {
     userToken: null,
     loggedIn: false,
+    cart: [],
     products: [
       { id: '1', name: 'Product 1', price: 200 },
       { id: '2', name: 'Product 2', price: 299 },
@@ -32,6 +33,16 @@ export default new Vuex.Store({
     searchVal: ''
   },
   getters: {
+    shoppingCart: state => {
+      return state.cart
+    },
+    cartItemCount: state => {
+      let items = 0
+      state.cart.forEach(item => {
+        items += item.quantity
+      })
+      return items
+    },
     loggedIn: state => state.loggedIn,
     taxedProducts: state => {
       let taxedProducts = state.products.map(product => {
@@ -52,6 +63,14 @@ export default new Vuex.Store({
     }
   },
   mutations: {
+    ADD_TO_CART: (state, { product, quantity }) => {
+      let exists = state.cart.find(item => item.product.id === product.id)
+      if(exists) {
+        exists.quantity += quantity
+        return
+      }
+      state.cart.push({product, quantity})
+    },
     SET_USER: (state, token) => {
       if(token) {
         state.userToken = token
@@ -102,6 +121,9 @@ export default new Vuex.Store({
 
   },
   actions: {
+    addProductToCart: ({commit}, { product, quantity }) => {
+      commit('ADD_TO_CART', { product, quantity })
+    },
     register: async ({dispatch}, _user) => {
       const user = {
         email: _user.email,

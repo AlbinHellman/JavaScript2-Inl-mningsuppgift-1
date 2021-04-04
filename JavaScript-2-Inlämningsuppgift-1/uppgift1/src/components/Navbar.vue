@@ -7,7 +7,7 @@
         <router-link class="link" to="/om" exact>Om</router-link>
         <router-link class="link" to="/products" exact>Produkter</router-link>
         <router-link class="fas fa-shopping-cart" to="/product/cartlist/id">
-        <span class="badge rounded-pill badge-notification bg-danger">1</span></router-link>
+        <span v-show="cartItemCount" class="badge rounded-pill badge-notification bg-danger">{{ cartItemCount }}</span></router-link>
         <router-link class="fas fa-user" v-if="!loggedIn" to="/user" exact></router-link>
         <router-link class="link" v-if="!loggedIn" to="/login" exact>Logga In</router-link>
                 <button class="link" v-if="!loggedIn" @click="logout">Logga Ut</button>
@@ -25,12 +25,17 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex'
+
 export default {
     components: {
+       
+        
 
     },
     computed: {
-        ...mapGetters(['loggedIn'])
+        ...mapGetters(['cartItemCount']),
+        ...mapGetters(['loggedIn']),
+        ...mapGetters(['cartItemCount'])
     },
     methods: {
         ...mapActions(['logout'])
@@ -40,6 +45,7 @@ export default {
 </script>
 
 <style>
+
 nav {
     display: flex;
     justify-content: space-between;

@@ -40,6 +40,7 @@ path: '/register',
     props: true
   },
 
+
   {
     path: '/user',
       name: 'User',

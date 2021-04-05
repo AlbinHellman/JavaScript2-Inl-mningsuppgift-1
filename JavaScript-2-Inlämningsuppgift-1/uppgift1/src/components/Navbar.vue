@@ -8,6 +8,7 @@
         <router-link class="link" to="/products" exact>Produkter</router-link>
         <router-link class="fas fa-shopping-cart" to="/product/cartlist/id">
         <span v-show="cartItemCount" class="badge rounded-pill badge-notification bg-danger">{{ cartItemCount }}</span></router-link>
+        <shopping-cart class="link" />
         <router-link class="fas fa-user" v-if="!loggedIn" to="/user" exact></router-link>
         <router-link class="link" v-if="!loggedIn" to="/login" exact>Logga In</router-link>
                 <button class="link" v-if="!loggedIn" @click="logout">Logga Ut</button>
@@ -26,10 +27,11 @@
 <script>
 import { mapGetters, mapActions } from 'vuex'
 
+import ShoppingCart from './shoppingCart/ShoppingCart.vue'
+
 export default {
     components: {
-       
-        
+        ShoppingCart
 
     },
     computed: {

@@ -27,7 +27,8 @@ import { mapGetters } from 'vuex'
 import shoppingCartProduct from './shoppingCartProduct'
 export default {
     components: {
-        shoppingCartProduct
+      shoppingCartProduct
+
     },
     computed: {
         ...mapGetters(['shoppingCart'])

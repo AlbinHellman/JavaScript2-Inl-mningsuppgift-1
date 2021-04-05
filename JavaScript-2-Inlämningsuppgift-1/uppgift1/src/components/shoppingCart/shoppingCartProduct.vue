@@ -2,11 +2,16 @@
   <div class="cart-item">
     <div class="p-2 d-flex justify-content-between align-items-center">
       <div class="d-flex align-items-center">
-        <img :src="item.product.image" alt="" class="img-fluid image-width">
-        <div>
-          <div><strong>{{ item.product.name }}</strong></div>
-          <div><small>{{ item.quantity }} x {{ item.product.price }}</small></div>
-        </div>
+          <div class="card">
+      <h1>{{ product.name }}</h1>
+      <p>id: {{ id }}</p>
+      <h3>PRICE: {{ product.price }}</h3>
+      <h3>PRICE + TAX: {{ product.taxPrice }}</h3>
+          
+       
+
+  
+  </div>
       </div>
       <div>
         <div class="btn-group btn-group-sm me-2" role="group" area-label="quantity">
@@ -21,8 +26,18 @@
 </template>
 
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
-  props: ['item']
+  props: ['item'],
+  methods: {
+    ...mapActions(['getProduct'])
+  },
+  computed: {
+    ...mapGetters(['product'])
+  },
+  created() {
+    this.getProduct(this.id)
+  }
 }
 </script>
 

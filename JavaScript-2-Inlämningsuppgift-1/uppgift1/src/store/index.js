@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import app from './app.store'
 import axios from '@/axios'
 import router from '@/router'
 
@@ -7,6 +8,9 @@ import router from '@/router'
 Vue.use(Vuex)
 
 export default new Vuex.Store({
+  modules: {
+    app
+  },
   state: {
     userToken: null,
     loggedIn: false,
@@ -117,10 +121,16 @@ export default new Vuex.Store({
     },
     SEARCH: (state, val) => {
       state.searchVal = val
+    },
+    DELETE_PRODUCT_FROM_CART: (state, id) => {
+      state.shoppingCart = state.shoppingCart.filter(product => product._id !== id)
     }
 
   },
   actions: {
+    deleteProductFromCart: ({commit}, id) => {
+      commit('DELETE_PRODUCT_FROM_CART', id)
+    },
     addProductToCart: ({commit}, { product, quantity }) => {
       commit('ADD_TO_CART', { product, quantity })
     },

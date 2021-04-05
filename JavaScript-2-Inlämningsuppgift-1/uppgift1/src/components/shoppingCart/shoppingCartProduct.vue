@@ -15,10 +15,17 @@
       </div>
       <div>
         <div class="btn-group btn-group-sm me-2" role="group" area-label="quantity">
-          <button class="btn btn-dark" @click.stop="">-</button>
-          <button class="btn btn-dark" @click.stop="">+</button>
+          <div class="container">
+            <div>
+              Counter: <strong class="counter">{{ appCounter }}</strong>
+            <div>
+          <button type="button" @click="increaseAppCounter()">Increase by 1</button>
+          <button type="button" @click="decreaseAppCounter()">Decrease by 1</button>
+          </div>
         </div>
-        <button class="btn btn-danger btn-sm " @click.stop=""><i class="fas fa-trash"></i></button>
+          </div>
+        </div>
+        <button class="btn btn-danger btn-sm " @click.stop="deleteProductFromCart(product._id)"><i class="fas fa-trash"></i></button>
       </div>
     </div>
     <div class="dropdown-divider"></div>
@@ -26,15 +33,40 @@
 </template>
 
 <script>
+import { ACTION_APP_INCREMENT, ACTION_APP_DECREMENT } from './../../store/app.store'
 import { mapActions, mapGetters } from 'vuex'
 export default {
   props: ['item'],
   methods: {
-    ...mapActions(['getProduct'])
+
+    
+    
+  
+    ...mapActions(['getProduct', 'deleteProductFromCart']),
+     increaseAppCounter: function() {
+      this.$store.dispatch(ACTION_APP_INCREMENT)
+    },
+    decreaseAppCounter: function() {
+      this.$store.dispatch(ACTION_APP_DECREMENT)
+    }
+  
+   
+  
+    
+  
   },
   computed: {
-    ...mapGetters(['product'])
+    ...mapGetters(['product']),
+    appCounter: function() {
+      return this.$store.getters.getCounter
+    }
   },
+   
+
+
+    
+    
+  
   created() {
     this.getProduct(this.id)
   }
